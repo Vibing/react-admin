@@ -1,4 +1,136 @@
-## Webpack 5 新特性
+这是一个可以拿来就能进入开发的 react + antd 空管理后台，你只需要开发页面就能让它成为你想要的管理系统
+
+![](https://tva1.sinaimg.cn/large/008i3skNly1gqc8o83h77j30r40c5weu.jpg)
+
+项目地址：https://github.com/Vibing/react-admin 欢迎 Star 和提供更好的建议
+
+## 概述
+
+- 该管理后台基于 webpack5、 react@17、react-router@5.2、typescript、antd@4.10 
+- 状态管理使用 mobx@6.x，相比 redux 使用更简单，整个项目使用多 store 进行状态管理更容易维护
+- 支持页面刷新后菜单和面包屑自动聚焦
+- 使用 dayjs 代替 momentjs
+- 支持 Code Splitting(代码分割)、Optional Chaining(可选链)、Nullish Coalescing Operator(控制合并运算符)
+- 使用 DLL 提取公共库进行缓存 提高项目加载速度
+
+## 项目结构
+
+```
+.
+├── dll // 生成的DLL
+├── node_modules
+├── src 
+  ├── components // 公用组件
+  ├── pages // 用于存放所有页面
+  ├── store // 顶级store，项目内任何地方都能访问
+  ├── public 
+  ├── App.tsx // APP组件
+  ├── routes.ts // 路由
+  ├── index.tsx // 整个项目的入口
+	└── index.ejs // 模板
+├── tsconfig.json // typescript配置
+├── typings // 自定义类型
+├── webpack
+├── package.json
+└── yarn.lock
+```
+
+## 使用
+
+```shell
+- git clone https://github.com/Vibing/react-admin.git
+- cd react-admin && yarn
+- yarn dll
+- yarn dev
+```
+
+执行上面命令后 打开 http://localhost:3000/#/home 即可访问
+
+## 描述
+
+### 基于 mobx 的多 store 状态管理
+
+项目提供两个顶级 store : ui-store 和 app-store 分别用于项目级别的UI状态控制和逻辑状态控制：
+
+```tsx
+// store/index.ts
+import uiStore from './ui-store'
+import appStore from './app-store'
+
+export { uiStore, appStore }
+
+// index.tsx
+class Main extends Component {
+  render() {
+    return (
+      <Provider
+        uiStore={uiStore}
+        appStore={appStore}
+        children={
+          <ConfigProvider locale={zhCN}>
+            <BaseLayout />
+          </ConfigProvider>
+        }
+      ></Provider>
+    )
+  }
+}
+```
+
+你也可有只使用一个顶级 store ，具体看你项目规划和大小
+
+除了顶级 store 用于项目级的状态管理，为了更好的状态维护，我们给每个页面创建一个对应的 store，页面级的 store 里只维护当前页面的状态：
+
+```typescript
+// pages/Home/store/index.ts
+import { observable, configure, makeObservable } from 'mobx'
+
+configure({
+  enforceActions: 'observed',
+})
+
+export default class Store {
+  constructor() {
+    makeObservable(this)
+  }
+
+  @observable timestamp = new Date().getTime()
+}
+```
+
+
+
+```tsx
+// pages/Home/index.tsx
+import React from 'react'
+import { Provider } from 'mobx-react'
+import Content from './components/content'
+import Store from './store'
+
+export default class Home extends React.Component {
+  store: any = new Store()
+
+  render() {
+    return <Provider store={this.store} children={<Content />} />
+  }
+}
+```
+
+每个页面的 store 在页面被创建时创建，页面组件销毁时自动销毁，不会给内存压力
+
+你可以启动项目，在 home 页面中点击按钮改变 store 的值体验一下
+
+### 菜单数据
+
+目前的菜单数据是模拟的，在 `src/components/Layout/_defaultRoutes.ts`中，实际开发时，这里的数据应该通过接口请求，然后渲染出来，你可以告知服务端小伙伴使用`_defaultRoutes.ts`里的数据格式
+
+## 打包
+
+在项目中运行`yarn build`就可以将项目打包到根目录的`dist`文件夹中，如果想将打包后的项目上传到阿里云OSS，我推荐你使用我编写的 webpack 插件：[webpack-oss-plugin](https://github.com/Vibing/webpack-oss-plugin) 它可以在打包后将打包产物上传到你配置的 OSS 中
+
+## 其他
+
+### webpack 5 新特性
 
 `webpack5` 相较于之前版本，主要以优化为主
 
@@ -39,3 +171,8 @@ nodejs 可以多线程来充分使用 CPU，所以可以使用类似 `thread-loa
 ### 其他
 
 有些没说，具体看代码吧，有更好的优化请告知我，谢谢
+
+
+
+
+
