@@ -14,6 +14,7 @@
 - 使用 [dayjs](https://github.com/iamkun/dayjs) 代替 momentjs
 - 支持 Code Splitting(代码分割)、Optional Chaining(可选链)、Nullish Coalescing Operator(控制合并运算符)
 - 使用 [DLL](https://webpack.docschina.org/plugins/dll-plugin/) 提取公共库进行缓存 提高项目加载速度
+- 使用 [Tree Shaking](https://webpack.docschina.org/guides/tree-shaking/#root) 优化项目，打包时删除没用到的代码
 - antd 组件库按需引入
 
 ## 项目结构
