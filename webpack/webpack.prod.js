@@ -5,6 +5,8 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CleanCSSPlugin = require('less-plugin-clean-css')
 const { merge } = require('webpack-merge')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 const commonConfig = require('./webpack.common')
 
 module.exports = merge(commonConfig, {
@@ -86,5 +88,6 @@ module.exports = merge(commonConfig, {
       },
       canPrint: true,
     }),
+    new BundleAnalyzerPlugin(),
   ],
 })

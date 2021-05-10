@@ -5,8 +5,8 @@
       {
         // "useBuiltIns": "usage",
         // "corejs": 3,
-        "modules": false,
-        "targets": "defaults"
+        // "targets": "defaults",
+        "modules": false
       }
     ],
     "@babel/preset-typescript",
