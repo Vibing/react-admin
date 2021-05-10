@@ -29,6 +29,6 @@ class Main extends Component {
   }
 }
 
-const App = hot(Main)
+// const App = hot(Main)
 
-ReactDOM.render(<App />, document.querySelector('#root'))
+ReactDOM.render(<Main />, document.querySelector('#root'))

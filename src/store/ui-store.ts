@@ -21,7 +21,6 @@ class GlobalUIStore {
   changeCollapsed(collapsed: boolean) {
     runInAction(() => {
       this.collapsed = collapsed
-      console.log('collapsed+', collapsed)
     })
   }
 }

@@ -1,19 +1,9 @@
-import {
-  observable,
-  configure,
-  action,
-  makeObservable,
-  runInAction,
-} from 'mobx'
+import { configure } from 'mobx'
 
 configure({
   enforceActions: 'observed',
 })
 
-class GlobalAPPStore {
-  constructor() {
-    makeObservable(this)
-  }
-}
+class GlobalAPPStore {}
 
 export default new GlobalAPPStore()
