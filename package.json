@@ -4,7 +4,11 @@
   "main": "index.js",
   "sideEffects": [
     "*.css",
-    "*.less"
+    "*.less",
+    "*.tsx",
+    "*.ts",
+    "*.js",
+    "*.jsx"
   ],
   "scripts": {
     "dev": "webpack serve --config webpack/webpack.dev.js  --progress --mode development",
