@@ -1,6 +1,6 @@
 这是一个可以拿来就能进入开发的 react + antd 空管理后台，你只需要开发页面就能让它成为你想要的管理系统
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gqc8o83h77j30r40c5weu.jpg)
+![](https://tva1.sinaimg.cn/large/008i3skNly1gqd6246oloj315d0q3q41.jpg)
 
 项目地址：https://github.com/Vibing/react-admin 欢迎 Star 和提供更好的建议
 

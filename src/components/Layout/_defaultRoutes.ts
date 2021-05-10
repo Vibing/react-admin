@@ -8,12 +8,12 @@ export default {
     },
     {
       path: '/article',
-      name: '一级菜单2',
+      name: '一级菜单',
       icon: 'icon-tixian1',
       children: [
         {
           path: '/article/demopage1',
-          name: '二级页面2-1',
+          name: 'demoPage1',
           icon: null,
         },
       ],
@@ -25,7 +25,7 @@ export default {
       children: [
         {
           path: '/set/demopage2',
-          name: '二级页面2',
+          name: 'demoPage2',
           icon: null,
         },
       ],

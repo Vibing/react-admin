@@ -7,13 +7,13 @@ export default [
   },
   {
     path: '/article/demopage1',
-    name: '二级页面1',
+    name: 'demoPage1',
     exact: true,
     component: () => import('./pages/DemoPage1'),
   },
   {
     path: '/set/demopage2',
-    name: '二级页面1',
+    name: 'demoPage2',
     exact: true,
     component: () => import('./pages/DemoPage2'),
   },
