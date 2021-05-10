@@ -2,14 +2,7 @@
   "name": "webpack5-react-demo",
   "version": "1.0.0",
   "main": "index.js",
-  "sideEffects": [
-    "*.css",
-    "*.less",
-    "*.tsx",
-    "*.ts",
-    "*.js",
-    "*.jsx"
-  ],
+  "sideEffects": false,
   "scripts": {
     "dev": "webpack serve --config webpack/webpack.dev.js  --progress --mode development",
     "build": "rm -rf dist && webpack --config webpack/webpack.prod.js --progress --color",
