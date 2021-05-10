@@ -7,11 +7,11 @@
 ## 概述
 
 - 该管理后台基于 webpack5、 react@17、react-router@5.2、typescript、antd@4.10 
-- 状态管理使用 mobx@6.x，相比 redux 使用更简单，整个项目使用多 store 进行状态管理更容易维护
+- 状态管理使用 [mobx@6.x](https://github.com/mobxjs/mobx)，相比 redux 使用更简单，整个项目使用多 store 进行状态管理更容易维护
 - 支持页面刷新后菜单和面包屑自动聚焦
-- 使用 dayjs 代替 momentjs
+- 使用 [dayjs](https://github.com/iamkun/dayjs) 代替 momentjs
 - 支持 Code Splitting(代码分割)、Optional Chaining(可选链)、Nullish Coalescing Operator(控制合并运算符)
-- 使用 DLL 提取公共库进行缓存 提高项目加载速度
+- 使用 [DLL](https://webpack.docschina.org/plugins/dll-plugin/) 提取公共库进行缓存 提高项目加载速度
 
 ## 项目结构
 
