@@ -14,7 +14,6 @@ module.exports = {
     path: path.resolve(__dirname, '../dist'),
   },
   resolve: {
-    mainFields: ['main'],
     enforceExtension: false,
     extensions: ['.tsx', '.ts', '.js', '.less'],
     symlinks: false,
