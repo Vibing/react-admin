@@ -8,5 +8,5 @@ export default observer(() => {
 
   console.log('rerender-->', num)
 
-  return <></>
+  return <>{num}</>
 })
