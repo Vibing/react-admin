@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { observer } from 'mobx-react'
-import ChildrenComponent from './components/ChildrenComponent'
+import ChildrenComponent from './components/SmartRender'
 
 export default observer(() => {
   const [count, setCount] = useState(0)
