@@ -4,7 +4,7 @@ export default {
       path: '/home',
       name: '主页',
       icon: 'icon-tongji',
-      children: [],
+      children: []
     },
     {
       path: '/article',
@@ -14,9 +14,9 @@ export default {
         {
           path: '/article/demopage1',
           name: 'demoPage1',
-          icon: null,
-        },
-      ],
+          icon: null
+        }
+      ]
     },
     {
       path: '/set',
@@ -26,9 +26,14 @@ export default {
         {
           path: '/set/demopage2',
           name: 'demoPage2',
-          icon: null,
+          icon: null
         },
-      ],
-    },
-  ],
+        {
+          path: '/set/demohooks',
+          name: 'demohooks',
+          icon: null
+        }
+      ]
+    }
+  ]
 }
