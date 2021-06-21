@@ -1,4 +1,4 @@
-这是一个空的 react + antd 空管理后台，只需要开发页面就能让它成为你想要的管理系统
+这是一个空的 react + antd 管理后台，只需要开发页面就能让它成为你想要的管理系统
 
 线上地址：https://vibing.github.io/react-admin/index.html
 
