@@ -1,6 +1,6 @@
 import './public/global.less'
 import loadable from '@loadable/component'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
 import routes from './routes'
 
 // 组件按需加载(Code Spliting)
@@ -16,7 +16,7 @@ import { inject, observer } from 'mobx-react'
 export default class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
           <Route exact path="/login" render={props => <Login {...props} />} />
           <Route
@@ -24,7 +24,7 @@ export default class App extends Component {
             render={props => <Layout route={routes} {...props} />}
           />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     )
   }
 }

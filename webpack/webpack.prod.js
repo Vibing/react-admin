@@ -12,7 +12,7 @@ module.exports = merge(commonConfig, {
   mode: 'production',
   output: {
     filename: '[name].[contenthash].js',
-    publicPath: '/'
+    publicPath: './'
   },
   module: {
     rules: [
@@ -91,7 +91,7 @@ module.exports = merge(commonConfig, {
       {
         filepath: require.resolve('../dll/vendor.dll.js'),
         includeRelatedFiles: false,
-        publicPath: '/'
+        publicPath: './'
       }
     ])
   ]
