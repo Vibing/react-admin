@@ -1,69 +1,76 @@
-import React, { Component } from 'react';
-import { Breadcrumb } from 'antd';
-import { Link, withRouter } from 'react-router-dom';
-import menuData from './_defaultRoutes';
+import React, { Component } from 'react'
+import { Breadcrumb } from 'antd'
+import { Link, withRouter } from 'react-router-dom'
+import { nanoid } from 'nanoid'
+import menuData from './_defaultRoutes'
 
 @withRouter
 export default class LayoutBreadcrumb extends Component {
-  unHistoryListener: any;
+  unHistoryListener: any
 
   state = {
-    breadcrumbs: [],
-  };
+    breadcrumbs: []
+  }
 
   componentDidMount() {
-    const { history } = this.props;
-    const breadcrumbs = this.setBreadcrumb();
+    const { history } = this.props
+    const breadcrumbs = this.setBreadcrumb()
 
     this.setState({
-      breadcrumbs,
-    });
+      breadcrumbs
+    })
     this.unHistoryListener = history.listen((i, a) => {
-      const breadcrumbs = this.setBreadcrumb();
+      const breadcrumbs = this.setBreadcrumb()
 
       this.setState({
-        breadcrumbs,
-      });
-    });
+        breadcrumbs
+      })
+    })
   }
 
   componentWillUnmount() {
-    this.unHistoryListener();
+    this.unHistoryListener()
   }
 
   render() {
-    const { breadcrumbs } = this.state;
+    const { breadcrumbs } = this.state
 
     return (
       <Breadcrumb style={{ margin: '5px 24px' }}>
-        {breadcrumbs.map((b) => (
-          <Breadcrumb.Item>
-            {b?.children?.length ? b.name : <Link to={b.path}>{b.name}</Link>}
+        {breadcrumbs.map(b => (
+          <Breadcrumb.Item key={nanoid()}>
+            {b?.children?.length ? (
+              b.name
+            ) : (
+              <Link to={b.path} key={nanoid()}>
+                {b.name}
+              </Link>
+            )}
           </Breadcrumb.Item>
         ))}
       </Breadcrumb>
-    );
+    )
   }
 
   setBreadcrumb = () => {
-    const { location } = this.props.history;
-    const pathArr = location.pathname.split('/');
-    const breadcrumbArr = [];
+    const { location } = this.props.history
+    const pathArr = location.pathname.split('/')
+    const breadcrumbArr = []
 
     if (pathArr.length > 1) {
-      menuData.routes.forEach((route) => {
+      menuData.routes.forEach(route => {
         if (location.pathname.startsWith(route.path)) {
-          breadcrumbArr.push(route);
+          breadcrumbArr.push(route)
           if (route?.children?.length) {
-            route.children.forEach((cRoute) => {
+            route.children.forEach(cRoute => {
               if (location.pathname.startsWith(cRoute.path)) {
-                breadcrumbArr.push(cRoute);
+                breadcrumbArr.push(cRoute)
               }
-            });
+            })
           }
         }
-      });
+      })
     }
-    return breadcrumbArr;
-  };
+    return breadcrumbArr
+  }
 }

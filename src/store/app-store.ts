@@ -3,25 +3,25 @@ import {
   configure,
   action,
   makeObservable,
-  runInAction,
+  runInAction
 } from 'mobx'
 
 configure({
-  enforceActions: 'observed',
+  enforceActions: 'observed'
 })
 
 class GlobalAPPStore {
   constructor() {
-    makeObservable(this)
+    makeObservable(this, {
+      user: observable,
+      changeUser: action
+    })
   }
 
-  @observable user = null
+  user = null
 
-  @action
   changeUser(user) {
-    runInAction(() => {
-      this.user = user
-    })
+    this.user = user
   }
 }
 

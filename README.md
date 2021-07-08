@@ -2,7 +2,8 @@
 
 线上地址：https://vibing.github.io/react-admin/index.html
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gqd6246oloj315d0q3q41.jpg)
+![](https://tva1.sinaimg.cn/large/008i3skNly1gs9d35qq9dj313u0qvteg.jpg)
+![](https://tva1.sinaimg.cn/large/008i3skNly1gs9d3p3ljhj313t0qt46x.jpg)
 
 项目地址：https://github.com/Vibing/react-admin 欢迎 Star 和提供更好的建议
 
@@ -87,18 +88,25 @@ class Main extends Component {
 
 ```typescript
 // pages/Home/store/index.ts
-import { observable, configure, makeObservable } from 'mobx'
+import { action, configure, makeObservable, observable } from 'mobx'
 
 configure({
-  enforceActions: 'observed',
+  enforceActions: 'observed'
 })
 
 export default class Store {
   constructor() {
-    makeObservable(this)
+    makeObservable(this, {
+      count: observable,
+      changeCount: action
+    })
   }
 
-  @observable timestamp = new Date().getTime()
+  count: number = 0
+
+  changeCount = (count: number) => {
+    this.count = count
+  }
 }
 ```
 
@@ -112,7 +120,7 @@ import Content from './components/content'
 import Store from './store'
 
 export default class Home extends React.Component {
-  store: any = new Store()
+  store: Store = new Store()
 
   render() {
     return <Provider store={this.store} children={<Content />} />

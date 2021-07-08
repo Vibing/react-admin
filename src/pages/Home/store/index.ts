@@ -1,13 +1,20 @@
-import { observable, configure, makeObservable } from 'mobx'
+import { action, configure, makeObservable, observable } from 'mobx'
 
 configure({
-  enforceActions: 'observed',
+  enforceActions: 'observed'
 })
 
 export default class Store {
   constructor() {
-    makeObservable(this)
+    makeObservable(this, {
+      count: observable,
+      changeCount: action
+    })
   }
 
-  @observable timestamp = new Date().getTime()
+  count: number = 0
+
+  changeCount = (count: number) => {
+    this.count = count
+  }
 }

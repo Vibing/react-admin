@@ -2,14 +2,14 @@ export default {
   routes: [
     {
       path: '/home',
-      name: '主页',
-      icon: 'icon-tongji',
+      name: '首页',
+      icon: 'icon-16',
       children: []
     },
     {
       path: '/article',
-      name: '一级菜单',
-      icon: 'icon-tixian1',
+      name: '文章管理',
+      icon: 'icon-lianxi2hebing_shipin',
       children: [
         {
           path: '/article/demopage1',
@@ -20,8 +20,8 @@ export default {
     },
     {
       path: '/set',
-      name: '一级菜单',
-      icon: 'icon-renwuguanli1',
+      name: '视频管理',
+      icon: 'icon-lianxi2hebing_shipin',
       children: [
         {
           path: '/set/demopage2',

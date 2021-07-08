@@ -1,6 +1,10 @@
+import React from 'react'
 import { createFromIconfontCN } from '@ant-design/icons'
+import { ICON_FONT_URL } from '@/config'
+console.log(ICON_FONT_URL)
 
-const iconfontUrl = '//at.alicdn.com/t/font_911845_p1azcplydjo.js'
-export default createFromIconfontCN({
-  scriptUrl: iconfontUrl,
+const IconFont = createFromIconfontCN({
+  scriptUrl: ICON_FONT_URL
 })
+
+export default props => <IconFont className="app-iconfont" {...props} />

@@ -1,10 +1,27 @@
+import { inject, observer } from 'mobx-react'
 import React, { Component } from 'react'
 
+@inject('uiStore')
+@observer
 export default class Logo extends Component {
   render() {
+    const { collapsed } = this.props.uiStore
+
     return (
       <div className="app-logo">
-        <img src="https://tva1.sinaimg.cn/large/008i3skNly1gqc704hpilj305k05kt92.jpg" />
+        <img src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
+
+        {!collapsed ? (
+          <h3
+            style={{
+              color: '#ccc',
+              margin: '0 0 0 10px',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            Ant Design
+          </h3>
+        ) : null}
       </div>
     )
   }

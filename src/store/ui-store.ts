@@ -1,27 +1,21 @@
-import {
-  observable,
-  configure,
-  action,
-  makeObservable,
-  runInAction,
-} from 'mobx'
+import { observable, configure, action, makeObservable } from 'mobx'
 
 configure({
-  enforceActions: 'observed',
+  enforceActions: 'observed'
 })
 
 class GlobalUIStore {
   constructor() {
-    makeObservable(this)
+    makeObservable(this, {
+      collapsed: observable,
+      changeCollapsed: action
+    })
   }
 
-  @observable collapsed = false
+  collapsed = false
 
-  @action
   changeCollapsed(collapsed: boolean) {
-    runInAction(() => {
-      this.collapsed = collapsed
-    })
+    this.collapsed = collapsed
   }
 }
 

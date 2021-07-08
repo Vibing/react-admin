@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
-import { Layout } from 'antd';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import loadable from '@loadable/component';
-import routes from '../../routes';
+import React, { Component } from 'react'
+import { Layout } from 'antd'
+import { Redirect, Route, Switch } from 'react-router-dom'
+import loadable from '@loadable/component'
+import routes from '@/routes'
 
-const { Content } = Layout;
+const { Content } = Layout
+
+const CannotFind = loadable(() => import('../../pages/404'))
 
 export default class LayoutContent extends Component {
   render() {
@@ -16,11 +18,12 @@ export default class LayoutContent extends Component {
         >
           <Switch>
             {this.renderRoutes()}
-            <Redirect from="/" to="/home" />
+            <Redirect exact from="/" to="/home" />
+            <Route render={props => <CannotFind {...props} />} />
           </Switch>
         </div>
       </Content>
-    );
+    )
   }
 
   renderRoutes = () => {
@@ -32,13 +35,13 @@ export default class LayoutContent extends Component {
             path={route.path}
             exact={route.exact}
             name={route.name}
-            render={(props) => {
-              const CurrComponent = loadable(route.component);
-              return <CurrComponent {...props} />;
+            render={props => {
+              const CurrComponent = loadable(route.component)
+              return <CurrComponent {...props} />
             }}
           />
-        );
+        )
       }
-    });
-  };
+    })
+  }
 }

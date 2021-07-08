@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Layout, Menu } from 'antd'
 import { inject, observer } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
-import Iconfont from 'components/Iconfont'
+import Iconfont from '@/components/Iconfont'
 import Logo from './Logo'
 
 import menusData from './_defaultRoutes'
@@ -20,7 +20,7 @@ export default class SlideMenu extends Component {
     super(props)
 
     this.state = {
-      openKeys: [],
+      openKeys: []
     }
   }
 
@@ -34,6 +34,7 @@ export default class SlideMenu extends Component {
 
     return (
       <Sider
+        width={220}
         trigger={null}
         className="app-slide"
         collapsible
@@ -72,7 +73,7 @@ export default class SlideMenu extends Component {
     const renderMenu = ({ path, icon, name, children }) => {
       const itemProps = {
         key: path,
-        icon: icon ? <Iconfont type={icon} /> : null,
+        icon: icon ? <Iconfont type={icon} style={{ fontSize: 18 }} /> : null
       }
       if (!children?.length) {
         return <Menu.Item {...itemProps}>{name}</Menu.Item>
@@ -99,12 +100,12 @@ export default class SlideMenu extends Component {
     switch (pathArr.length) {
       case 2:
         this.setState({
-          openKeys: [],
+          openKeys: []
         })
         break
       case 3:
         this.setState({
-          openKeys: [pathArr.slice(0, 2).join('/')],
+          openKeys: [pathArr.slice(0, 2).join('/')]
         })
         break
     }
@@ -112,7 +113,7 @@ export default class SlideMenu extends Component {
 
   onOpenChange = (openKeys: string[]) => {
     this.setState({
-      openKeys,
+      openKeys
     })
   }
 }

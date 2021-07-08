@@ -6,12 +6,7 @@ body,
 .app-layout {
   height: 100%;
 }
-.app-slide {
-  // overflow: auto;
-  // height: 100vh;
-  // position: fixed;
-  // left: 0;
-}
+
 .app-container {
   margin: 0 16px 0;
   overflow: initial;
@@ -19,21 +14,35 @@ body,
 }
 .app-logo {
   display: flex;
-  height: 40px;
+  height: 32px;
   margin: 16px;
   justify-content: center;
-  img{
+  align-items: center;
+  img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
   }
 }
+
+.app-iconfont {
+  font-size: 18px;
+  margin-right: 5px;
+}
+.app-customer-info {
+  font-size: 13px;
+  justify-content: center;
+  padding: 5px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
 .site-layout .app-header {
   display: flex;
   position: relative;
   align-items: center;
   background: #fff;
   padding: 0 24px;
+  box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
   .app-trigger {
     font-size: 18px;
     line-height: 64px;
@@ -43,8 +52,24 @@ body,
   .app-trigger:hover {
     color: #1890ff;
   }
-  .app-avatar{
+  .app-avatar {
+    cursor: pointer;
     position: absolute;
     right: 20px;
+    display: flex;
+    align-items: center;
+    height: 46px;
+    padding: 0 15px 0 3px;
+    border-radius: 32px;
+    transition: 0.3s;
+    &:hover {
+      background: #f0f2f5;
+    }
+  }
+}
+.app-header-popover {
+  p {
+    display: flex;
+    align-items: center;
   }
 }

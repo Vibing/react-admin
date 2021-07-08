@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const { merge } = require('webpack-merge')
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 
 const commonConfig = require('./webpack.common')
 
@@ -10,24 +11,25 @@ module.exports = merge(commonConfig, {
   output: {
     filename: '[name].js',
     pathinfo: false,
+    publicPath: '/'
   },
   cache: {
-    type: 'memory',
+    type: 'memory'
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.less$/,
         use: [
           {
-            loader: 'style-loader',
+            loader: 'style-loader'
           },
           {
-            loader: 'css-loader',
+            loader: 'css-loader'
           },
           {
             loader: 'less-loader',
@@ -35,25 +37,34 @@ module.exports = merge(commonConfig, {
               lessOptions: {
                 paths: [
                   path.resolve(__dirname, '../src'),
-                  path.resolve(__dirname, '../node_modules/antd'),
+                  path.resolve(__dirname, '../node_modules/antd')
                 ],
-                javascriptEnabled: true,
-              },
-            },
-          },
-        ],
-      },
-    ],
+                javascriptEnabled: true
+              }
+            }
+          }
+        ]
+      }
+    ]
   },
   optimization: {
     runtimeChunk: true,
     removeAvailableModules: false,
     removeEmptyChunks: false,
     splitChunks: false,
-    usedExports: true,
+    usedExports: true
   },
 
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new AddAssetHtmlPlugin([
+      {
+        filepath: require.resolve('../dll/vendor.dll.js'),
+        includeRelatedFiles: false,
+        publicPath: '/'
+      }
+    ])
+  ],
 
   devServer: {
     historyApiFallback: true,
@@ -61,6 +72,6 @@ module.exports = merge(commonConfig, {
     open: false,
     hot: true,
     quiet: true,
-    port: 3000,
-  },
+    port: 3000
+  }
 })

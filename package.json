@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "webpack serve --config webpack/webpack.dev.js  --progress --mode development",
     "build": "rm -rf dist && webpack --config webpack/webpack.prod.js --progress --color",
-    "dll": "webpack --config webpack/webpack.dll.js"
+    "dll": "rm -rf dll && webpack --config webpack/webpack.dll.js"
   },
   "repository": "https://github.com/Vibing/webpack5-react-demo.git",
   "author": "chenlong <903245852@qq.com>",
@@ -58,9 +58,11 @@
     "@ant-design/icons": "^4.4.0",
     "@loadable/component": "^5.14.1",
     "antd": "^4.10.2",
+    "axios": "^0.21.1",
     "dayjs": "^1.10.3",
     "mobx": "^6.1.4",
     "mobx-react": "^7.1.0",
+    "nanoid": "^3.1.23",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0"
